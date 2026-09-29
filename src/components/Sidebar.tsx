@@ -1,6 +1,8 @@
 import { useState, type ReactNode } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, LogOut, Settings, Bell, Search } from 'lucide-react';
+import {openPlatformWithHandoff} from '@/lib/platformHandoff';
+import {platformUrl} from '@/lib/platformUrls';
 import { Logo } from './Logo';
 import { Avatar } from '@/components/ui/Stepper';
 import { productThemes, type ProductKey } from '@/lib/designTokens';
@@ -11,6 +13,7 @@ export interface SidebarItem {
   href: string;
   icon: ReactNode;
   badge?: string | number;
+  onClick?: () => Promise<void>;
 }
 
 export interface SidebarSection {
@@ -45,6 +48,8 @@ export function DashboardLayout({
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const [navigationError,setNavigationError]=useState('');
+  const openItem=(item:SidebarItem)=>{setNavigationError('');if(item.onClick)void item.onClick().catch(()=>setNavigationError('This platform could not be opened. Please retry or contact support.'));};
   const navigate = useNavigate();
   const { signOut, profile } = useAuth();
   const roleKey = String(profile?.role || '');
@@ -86,6 +91,7 @@ export function DashboardLayout({
                   <Link
                     key={item.href}
                     to={item.href}
+                    onClick={item.onClick?(event)=>{event.preventDefault();openItem(item);}:undefined}
                     className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.href)
                         ? `${theme.badgeBg} ${theme.textClass}`
@@ -146,7 +152,7 @@ export function DashboardLayout({
               {searchOpen && <div className="absolute right-0 top-11 z-50 w-72 rounded-xl border border-border bg-white p-3 shadow-xl">
                 <input autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search dashboard…" className="w-full rounded-lg border border-border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-royal-200" />
                 <div className="mt-2 max-h-64 overflow-y-auto">
-                  {searchableItems.slice(0, 8).map((item) => <Link key={item.href} to={item.href} onClick={() => setSearchOpen(false)} className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm hover:bg-gray-50">{item.icon}<span>{item.label}</span></Link>)}
+                  {searchableItems.slice(0, 8).map((item) => <Link key={item.href} to={item.href} onClick={(event)=>{setSearchOpen(false);if(item.onClick){event.preventDefault();openItem(item);}}} className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm hover:bg-gray-50">{item.icon}<span>{item.label}</span></Link>)}
                   {searchableItems.length === 0 && <p className="px-3 py-2 text-sm text-muted">No matching dashboard page.</p>}
                 </div>
               </div>}
@@ -166,7 +172,7 @@ export function DashboardLayout({
               </button>
               {profileOpen && <div className="absolute right-0 top-11 z-50 w-56 rounded-xl border border-border bg-white p-2 shadow-xl">
                 <Link to={profileHref} onClick={() => setProfileOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-50">My profile</Link>
-                {canSeeAdministration && <Link to="/admin/settings" onClick={() => setProfileOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-50">Administration settings</Link>}
+                {canSeeAdministration && <Link to={platformUrl("admin","/admin/settings")} onClick={(event)=>{event.preventDefault();setProfileOpen(false);void openPlatformWithHandoff("admin","/admin/settings").catch(()=>setNavigationError("Administration could not be opened. Please retry."));}} className="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-50">Administration settings</Link>}
                 <button onClick={handleSignOut} className="w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-rose-600 hover:bg-rose-50">Sign out</button>
               </div>}
             </div>
@@ -176,6 +182,7 @@ export function DashboardLayout({
         {/* Content */}
         <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
           <div className="max-w-[1280px] mx-auto animate-fade-in">
+            {navigationError&&<p role="alert" className="mb-4 rounded-xl bg-rose-50 p-4 text-rose-700">{navigationError}</p>}
             {children}
           </div>
         </main>

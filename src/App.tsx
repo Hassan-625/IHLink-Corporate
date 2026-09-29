@@ -28,11 +28,15 @@ import { BillingPage } from '@/pages/account/BillingPage';
 import { AccountSupportPage } from '@/pages/account/AccountSupportPage';
 import { AccountSecurityPage } from '@/pages/account/AccountSecurityPage';
 import { ProfilePage } from '@/pages/account/ProfilePage';
+import {BusinessCentreHome} from '@/pages/business-centre/BusinessCentreHome';
+import {BusinessCustomerWorkspace} from '@/pages/business-centre/BusinessOperations';
 export default function App(){return <Routes>
   <Route path="/" element={<CorporateHome/>}/>
   <Route path="/about" element={<AboutPage/>}/><Route path="/services" element={<ServicesPage/>}/><Route path="/onboarding" element={<OnboardingPage/>}/><Route path="/contact" element={<ContactPage/>}/><Route path="/portfolio" element={<PortfolioPage/>}/><Route path="/case-studies" element={<CaseStudiesPage/>}/><Route path="/testimonials" element={<TestimonialsPage/>}/><Route path="/blog" element={<BlogPage/>}/><Route path="/blog/article" element={<BlogArticlePage/>}/><Route path="/careers" element={<CareersPage/>}/><Route path="/partners" element={<PartnersPage/>}/><Route path="/faq" element={<FAQPage/>}/><Route path="/privacy" element={<PrivacyPage/>}/><Route path="/terms" element={<TermsPage/>}/><Route path="/support" element={<SupportPage/>}/>
   <Route path="/signin" element={<SignInPage/>}/><Route path="/register" element={<RegisterPage/>}/><Route path="/reset-password" element={<ResetPasswordPage/>}/><Route path="/auth/update-password" element={<UpdatePasswordPage/>}/><Route path="/verify-email" element={<VerifyEmailPage/>}/><Route path="/auth/handoff" element={<AuthHandoffPage/>}/>
   <Route path="/dashboard" element={<Navigate to="/account" replace/>}/>
+  <Route path="/business-centre" element={<BusinessCentreHome/>}/>
+  <Route path="/business-centre/workspace" element={<ProtectedRoute product="business_centre" requireServiceAccess><BusinessCustomerWorkspace/></ProtectedRoute>}/>
   <Route path="/account" element={<ProtectedRoute><AccountPage/></ProtectedRoute>}/>
   <Route path="/account/notifications" element={<ProtectedRoute><NotificationsPage/></ProtectedRoute>}/>
   <Route path="/account/billing" element={<ProtectedRoute><BillingPage/></ProtectedRoute>}/>
