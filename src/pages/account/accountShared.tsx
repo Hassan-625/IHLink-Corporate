@@ -4,6 +4,9 @@ import type { SidebarSection } from "@/components/Sidebar";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
 
+import {platformUrl,type PlatformKey} from "@/lib/platformUrls";
+import {openPlatformWithHandoff} from "@/lib/platformHandoff";
+
 const workspaceItems=[
  {product:"datasub",label:"DataSub",href:"/datasub/dashboard",icon:<Smartphone className="h-4 w-4"/>},
  {product:"schoolpro",label:"SchoolPro",href:"/schoolpro/proprietor-dashboard",icon:<GraduationCap className="h-4 w-4"/>},
@@ -23,7 +26,7 @@ const baseItems=[{label:"Customer Dashboard",href:"/account",icon:<LayoutDashboa
 export function useAccountSections():SidebarSection[]{
  const {user,profile,adminAccess}=useAuth(); const [active,setActive]=useState<string[]>([]);
  const superAdmin=profile?.role==="super_admin";
- const platformAdmin=profile?.role==="platform_admin";
+ const platformAdmin=Boolean(profile&&profile.role!=="customer");
  useEffect(()=>{let mounted=true;async function load(){if(!supabase||!user){if(mounted)setActive([]);return;}const {data}=await supabase.from("customer_service_access").select("product").eq("user_id",user.id).eq("status","active");if(mounted)setActive((data||[]).map(x=>x.product));}void load();return()=>{mounted=false};},[user]);
- return useMemo(()=>[{items:baseItems},{title:"Platform workspaces",items:workspaceItems.filter(x=>superAdmin||active.includes(x.product)||(platformAdmin&&adminAccess.some(a=>a.product===x.product&&a.can_view))).map(({product:_,...item})=>item)}],[active,superAdmin,platformAdmin,adminAccess]);
+ return useMemo(()=>[{items:baseItems},{title:"Platform workspaces",items:workspaceItems.filter(x=>superAdmin||active.includes(x.product)||(platformAdmin&&adminAccess.some(a=>a.product===x.product&&a.can_view))).map(({product,...item})=>product==='business_centre'?item:{...item,href:platformUrl(product as PlatformKey,item.href),onClick:()=>openPlatformWithHandoff(product as PlatformKey,item.href)})}],[active,superAdmin,platformAdmin,adminAccess]);
 }
