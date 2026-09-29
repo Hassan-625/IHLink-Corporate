@@ -10,13 +10,13 @@ type BrandIdentity = {
 };
 
 const identities: Record<PlatformKey, BrandIdentity> = {
-  corporate: { name: 'IHLink', qualifier: 'CO. LTD.', tagline: 'Connecting your digital world', logo: '/logos/ihlink-master.svg', documentTitle: 'IHLink Co. Ltd.' },
+  corporate: { name: 'IHLink', qualifier: 'CO. LTD.', tagline: 'Connecting your digital world', logo: '/brand/ihlink-icon.png?v=20260928-valid-logo4', documentTitle: 'IHLink Co. Ltd.' },
   datasub: { name: 'IHLink DataSub', tagline: 'Smart digital services, connected', logo: '/logos/datasub.webp', documentTitle: 'IHLink DataSub' },
   schoolpro: { name: 'IHLink SchoolPro', tagline: 'Smarter school management', logo: '/logos/schoolpro.webp', documentTitle: 'IHLink SchoolPro' },
   consult: { name: 'IHLink Consult', tagline: 'Technology expertise for your next move', logo: '/logos/consult.webp', documentTitle: 'IHLink Consult' },
   engineering: { name: 'IHLink Engineering', tagline: 'Engineering intelligent systems', logo: '/logos/engineering.webp', documentTitle: 'IHLink Engineering' },
   host: { name: 'IHLink Hosting & Domains', tagline: 'Your digital presence starts here', logo: '/logos/hosting-domains.webp', documentTitle: 'IHLink Hosting & Domains' },
-  admin: { name: 'IHLink Administration', tagline: 'Ecosystem control centre', logo: '/logos/ihlink-master.svg', documentTitle: 'IHLink Administration' },
+  admin: { name: 'IHLink Administration', tagline: 'Ecosystem control centre', logo: '/brand/ihlink-icon.png?v=20260928-valid-logo4', documentTitle: 'IHLink Administration' },
   business_centre: { name: 'IHLink Business & Innovation Centre', tagline: 'Ideas, services and enterprise', logo: '/logos/business-innovation-centre.webp', documentTitle: 'IHLink Business & Innovation Centre' },
   print: { name: 'IHLink Print & Branding', tagline: 'Print, identity and brand execution', logo: '/logos/print-branding.webp', documentTitle: 'IHLink Print & Branding' },
   fabrication: { name: 'IHLink 3D Fabrication Lab', tagline: 'Design, prototype and fabricate', logo: '/logos/3d-fabrication.webp', documentTitle: 'IHLink 3D Fabrication Lab' },
