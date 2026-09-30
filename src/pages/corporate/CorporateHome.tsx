@@ -18,11 +18,11 @@ const pillars:{title:string;subtitle:string;tone:string;icon:typeof Cloud;servic
   {name:'IHLink Consult',href:'/consult',logo:'consult',image:'/images/ihlink-consult-clean.webp',desc:'Strategy · Technology · IT Solutions · Cloud · AI',cta:'Explore Consult'},
   {name:'IHLink Engineering',href:'/engineering',logo:'engineering',image:'/images/ihlink-engineering-clean.webp',desc:'Control · Robotics · IoT · Instrumentation',cta:'Explore Engineering'}]},
  {title:'Business & Innovation Centre',subtitle:'Create. Print. Learn. Innovate.',tone:'from-orange-600 to-amber-500',icon:Lightbulb,services:[
-  {name:'IHLink Print & Branding',href:'/print',logo:'print',image:'/images/ihlink-print.webp',desc:'Print · Design · Brand · Promote',cta:'Explore Print'},
-  {name:'IHLink 3D & Fabrication Lab',href:'/fabrication',logo:'fabrication',image:'/images/ihlink-fabrication.webp',desc:'Prototype · 3D Printing · CAD Design',cta:'Explore 3D Lab'},
-  {name:'IHLink AI & Compute',href:'/compute',logo:'compute',image:'/images/ihlink-compute.webp',desc:'Compute · AI · Data Science · Research',cta:'Explore AI & Compute'},
-  {name:'IHLink Academy',href:'/academy',logo:'academy',image:'/images/ihlink-academy.webp',desc:'Learn · Skill · Grow · Certification',cta:'Explore Academy'},
-  {name:'IHLink Digital Business Centre',href:'/business-centre/digital-services',logo:'digital_business',desc:'Documents · Digital Services · Business Support',cta:'Explore Digital Business'}]}
+  {name:'IHLink Print & Branding',href:'/print',logo:'print',image:'/images/ihlink-print.png.png',desc:'Print · Design · Brand · Promote',cta:'Explore Print'},
+  {name:'IHLink 3D & Fabrication Lab',href:'/fabrication',logo:'fabrication',image:'/images/ihlink-fabrication.png.png',desc:'Prototype · 3D Printing · CAD Design',cta:'Explore 3D Lab'},
+  {name:'IHLink AI & Compute',href:'/compute',logo:'compute',image:'/images/ihlink-compute.png.png',desc:'Compute · AI · Data Science · Research',cta:'Explore AI & Compute'},
+  {name:'IHLink Academy',href:'/academy',logo:'academy',image:'/images/ihlink-academy.png.png',desc:'Learn · Skill · Grow · Certification',cta:'Explore Academy'},
+  {name:'IHLink Digital Business Centre',href:'/business-centre/digital-services',logo:'digital_business',image:'/images/ihlink-digital-business.png.png',desc:'Documents · Digital Services · Business Support',cta:'Explore Digital Business'}]}
 ];
 const audiences=[[Users,'Individuals','Everyday digital and technology services'],[GraduationCap,'Students','Learn, build and grow'],[Building2,'Schools','Education and management solutions'],[BriefcaseBusiness,'Businesses','Technology and tools for growth'],[HeartHandshake,'NGOs','Solutions for community impact'],[Landmark,'Government','Institutional technology solutions']] as const;
 const faqs=[
