@@ -17,11 +17,11 @@ const highlights=[
 ];
 const digitalServices=['Document typing & formatting','Photocopying & scanning','CV & professional documents','Online applications & forms','Business registration support','Internet & computer services','Lamination & binding','Passport & ID photo preparation','Bulk document processing'];
 const units=[
- {title:'IHLink Print & Branding',href:'/print',icon:Printer,desc:'Print, design, brand and promote.',image:'/images/business-centre/print-branding.jpg'},
+ {title:'IHLink Print & Branding',href:'/print',icon:Printer,desc:'Print, design, brand and promote.',image:'/images/ihlink-print.webp'},
  {title:'IHLink 3D & Fabrication Lab',href:'/fabrication',icon:Box,desc:'CAD, prototyping, enclosures, custom parts and fabrication workflows.',image:'/images/ihlink-fabrication.webp'},
  {title:'IHLink AI & Compute',href:'/compute',icon:Bot,desc:'AI/ML workloads, data processing, experimentation and managed compute.',image:'/images/ihlink-compute.webp'},
  {title:'IHLink Academy',href:'/academy',icon:GraduationCap,desc:'Practical software, cloud, AI, networking, cybersecurity and engineering learning.',image:'/images/ihlink-academy.webp'},
- {title:'Digital Business Centre',href:'/business-centre/digital-services',icon:Palette,desc:'Documents, registrations and everyday business support.',image:'/images/business-centre/digital-business.jpg'},
+ {title:'Digital Business Centre',href:'/business-centre/digital-services',icon:Palette,desc:'Documents, registrations and everyday business support.',image:'/images/ihlink-digital.webp'},
 ];
 export function BusinessCentreHome(){
  return <div className="min-h-screen bg-white"><Header product="corporate"/>
