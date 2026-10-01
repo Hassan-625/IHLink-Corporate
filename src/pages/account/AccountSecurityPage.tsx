@@ -1,17 +1,25 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { KeyRound, LogOut, ShieldCheck } from "lucide-react";
+import { AlertTriangle, KeyRound, LogOut, ShieldCheck, Trash2 } from "lucide-react";
 import { ModulePage } from "@/components/ModulePage";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { useAuth } from "@/context/AuthContext";
 import { useAccountSections } from "./accountShared";
+import { supabase } from "@/lib/supabase";
 
 export function AccountSecurityPage(){
  const {profile,user,signOut}=useAuth(); const sections=useAccountSections();
+ const [deletion,setDeletion]=useState<{id:string;status:string;reason:string|null;requested_at:string}|null>(null);
+ const [reason,setReason]=useState(""),[busy,setBusy]=useState(false),[notice,setNotice]=useState("");
+ useEffect(()=>{if(!supabase||!user)return;void supabase.from("account_deletion_requests").select("id,status,reason,requested_at").eq("user_id",user.id).order("requested_at",{ascending:false}).limit(1).maybeSingle().then(({data,error})=>{if(error)setNotice(error.message);else setDeletion(data);});},[user]);
+ async function requestDeletion(){if(!supabase||!user||busy)return;if(!window.confirm("Submit an account deletion request? Your account is not erased immediately; IHLink will review the request and preserve records that must be retained."))return;setBusy(true);setNotice("");const {data,error}=await supabase.rpc("request_account_deletion",{p_reason:reason.trim()||null});if(error)setNotice(error.message);else{setDeletion(data);setNotice("Deletion request submitted for review.");}setBusy(false);}
+ async function cancelDeletion(){if(!supabase||busy)return;if(!window.confirm("Cancel your pending account deletion request?"))return;setBusy(true);setNotice("");const {data,error}=await supabase.rpc("cancel_account_deletion");if(error)setNotice(error.message);else{setDeletion(data);setNotice("Deletion request cancelled.");}setBusy(false);}
  const name=[profile?.first_name,profile?.last_name].filter(Boolean).join(" ")||profile?.email||"IHLink Customer";
  const verified=Boolean(user?.email_confirmed_at);
  return <ModulePage product="corporate" sections={sections} title="Account Security" description="Manage password recovery, verification and authenticated access for your IHLink account." userName={name} userRole={profile?.role==="super_admin"||profile?.role==="platform_admin"?"IHLink Administrator":"IHLink Customer"} primaryAction="Security">
   <div className="grid gap-6 lg:grid-cols-2"><Card><ShieldCheck className="h-7 w-7 text-emerald-600"/><h2 className="mt-4 text-xl font-black">Email verification</h2><p className="mt-2 text-sm text-muted">{verified?"Your signed-in email address is verified.":"Your account does not currently report a verified email address."}</p><p className="mt-3 break-all text-sm font-semibold">{user?.email||profile?.email||"—"}</p></Card>
   <Card><KeyRound className="h-7 w-7 text-royal-600"/><h2 className="mt-4 text-xl font-black">Password & session</h2><p className="mt-2 text-sm text-muted">Use password recovery to securely set a new password. Signing out ends the current browser session.</p><div className="mt-5 flex flex-wrap gap-3"><Link to="/reset-password"><Button>Change password</Button></Link><Button variant="secondary" leftIcon={<LogOut className="h-4 w-4"/>} onClick={()=>void signOut()}>Sign out</Button></div></Card></div>
+  {profile?.role==="customer"&&<Card className="border-rose-200"><div className="flex items-start gap-3"><AlertTriangle className="mt-1 h-6 w-6 shrink-0 text-rose-600"/><div className="flex-1"><h2 className="text-xl font-black">Account deletion</h2><p className="mt-2 text-sm text-muted">Request closure of your IHLink customer account. Submission does not immediately erase your login or transactional records. IHLink must preserve records required for payment, invoice, audit, fraud-prevention or legal/accounting purposes and will review the request before final processing.</p>{notice&&<p className="mt-3 rounded-lg bg-gray-50 p-3 text-sm">{notice}</p>}{deletion?.status==="pending"?<div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4"><p className="font-bold text-amber-900">Deletion request pending</p><p className="mt-1 text-sm text-amber-800">Requested {new Date(deletion.requested_at).toLocaleString("en-NG")}. You may cancel it while it remains pending.</p><Button className="mt-3" variant="secondary" disabled={busy} onClick={()=>void cancelDeletion()}>Cancel deletion request</Button></div>:<div className="mt-4 space-y-3"><label className="block text-sm font-semibold">Reason (optional)<textarea rows={3} maxLength={1000} value={reason} onChange={e=>setReason(e.target.value)} className="mt-1 w-full rounded-xl border border-border bg-white p-3 text-sm" placeholder="Tell us why you want to close the account."/></label><Button disabled={busy} variant="secondary" leftIcon={<Trash2 className="h-4 w-4"/>} onClick={()=>void requestDeletion()}>{busy?"Submitting…":"Request account deletion"}</Button>{deletion&&<p className="text-xs text-muted">Most recent request status: <span className="font-bold capitalize">{deletion.status}</span>.</p>}</div>}</div></div></Card>}
  </ModulePage>;
 }
