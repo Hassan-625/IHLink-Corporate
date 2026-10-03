@@ -86,7 +86,7 @@ const sections = [
       '• SSL/TLS encryption for all data transmitted between your device and our servers.',
       '• Secure cloud infrastructure with regular security audits and penetration testing.',
       '• Access controls that limit information access to authorized personnel only.',
-      '• Regular data backups and disaster recovery procedures.',
+      '• Database access controls, audit mechanisms, and recovery procedures appropriate to the infrastructure currently in use.',
       '• Continuous monitoring for suspicious activity and potential threats.',
       'While we strive to protect your information, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security but we are committed to implementing the best available protections.',
     ],
@@ -102,7 +102,7 @@ const sections = [
       '• Right to Data Portability: You can request your data in a structured, machine-readable format.',
       '• Right to Object: You can object to the processing of your data for specific purposes.',
       '• Right to Withdraw Consent: You can withdraw consent for data processing at any time.',
-      'To exercise any of these rights, please contact us at privacy@ihlink.com.',
+      'To exercise any of these rights, please use the Get in touch / Support page on the IHLink platform.',
     ],
   },
   {
@@ -110,10 +110,9 @@ const sections = [
     title: '8. Contact Us',
     content: [
       'If you have any questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us:',
-      '• Email: privacy@ihlink.com',
+      '• Use the Get in touch / Support page on the IHLink platform for privacy requests.',
       '• Phone: 0814 667 6278',
-      '• Address: IHLink Co. Ltd., 14 Adeola Odeku Street, Victoria Island, Lagos, Nigeria',
-      'We will respond to your request within 30 days of receipt.',
+      'We will handle privacy requests in accordance with applicable requirements and the nature of the request.',
     ],
   },
 ];
