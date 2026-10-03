@@ -75,9 +75,9 @@ const sections = [
     title: '5. Payments & Billing',
     content: [
       'DataSub: When you fund your wallet or make transactions, you authorize us to charge the selected payment method. All transactions are processed in Nigerian Naira (₦). Transaction fees, where applicable, are disclosed before confirmation.',
-      'SchoolPro: Subscription fees are billed based on the number of students and the selected plan. Invoices are issued monthly or annually, as agreed. Late payments may result in service suspension.',
+      'SchoolPro: Subscription charges follow the plan and billing cycle selected by the school. Current prices and billing options are shown before subscription confirmation. School fee collections are separate from IHLink SchoolPro subscription charges.',
       'Consult: Project fees are outlined in a separate proposal or contract agreed upon before work begins. Payment terms (milestones, deposits, final payment) are specified in the project agreement.',
-      'Refunds: Failed transactions on DataSub are automatically reversed to your wallet. For other refund requests, please contact billing@ihlink.com. Refunds are processed within 5-10 business days.',
+      'Refunds: DataSub purchases that fail after wallet reservation are automatically reversed to the customer wallet. Transactions with an uncertain upstream result are reconciled before reversal to avoid duplicate value. Other payment disputes and refund requests are reviewed through IHLink Support according to the relevant service and payment status.',
     ],
   },
   {
@@ -112,7 +112,7 @@ const sections = [
     id: 'termination',
     title: '9. Account Termination',
     content: [
-      'You may terminate your account at any time by contacting hassanisahassan12@gmail.com. Upon termination, your data will be retained for 90 days to allow for account reactivation, after which it will be permanently deleted.',
+      'You may request account deletion through the account-deletion workflow or IHLink Support. Because one IHLink identity can be shared across multiple services, deletion is reviewed before final revocation or anonymisation. Data may be retained where necessary for legal, security, accounting, fraud-prevention, or transaction-record obligations.',
       'We reserve the right to suspend or terminate your account if you violate these Terms, engage in fraudulent activity, or if required by law. We may also terminate accounts that remain inactive for more than 12 months.',
       'Upon termination, any outstanding fees or balances become immediately due and payable.',
     ],
@@ -131,9 +131,8 @@ const sections = [
     title: '11. Contact Us',
     content: [
       'If you have any questions about these Terms and Conditions, please contact us:',
-      '• Email: legal@ihlink.com',
+      '• Use the Get in touch / Support page on the IHLink platform for legal or account enquiries.',
       '• Phone: 0814 667 6278',
-      '• Address: IHLink Co. Ltd., 14 Adeola Odeku Street, Victoria Island, Lagos, Nigeria',
     ],
   },
 ];
