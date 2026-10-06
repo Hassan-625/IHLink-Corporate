@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { PlatformLink as Link } from '@/components/PlatformLink';
 import { PageShell } from '@/components/PageShell';
 import { Badge } from '@/components/ui/Badge';
 import { ArrowRight, Cloud, Cog, Lightbulb } from 'lucide-react';

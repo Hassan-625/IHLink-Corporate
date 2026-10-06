@@ -35,7 +35,7 @@ const faqData: Record<string, { question: string; answer: string }[]> = {
     { question: 'Which networks are supported?', answer: 'We support all major Nigerian networks: MTN, Airtel, Glo and T2 for airtime and data purchases.' },
     { question: 'How do I become a reseller?', answer: 'Sign up for a DataSub account, navigate to the Reseller section, and upgrade your account. Resellers get discounted rates and access to our API for integration.' },
     { question: 'How long do transactions take?', answer: 'Processing time depends on the external provider used for the selected service. The transaction status in your DataSub account is the authoritative record once provider processing is enabled.' },
-    { question: 'What payment methods can I use to fund my wallet?', answer: 'Available funding methods are shown inside the DataSub wallet. Methods that depend on a payment gateway become available only when that gateway is configured.' },
+    { question: 'What payment methods can I use to fund my wallet?', answer: 'DataSub wallet funding uses the BillStack virtual bank account shown in your wallet. Follow the displayed account details and fees; only confirmed transfers credit the wallet.' },
     { question: 'Is there a minimum wallet balance?', answer: 'No, there is no minimum balance requirement. However, you need sufficient funds to complete any transaction.' },
   ],
   SchoolPro: [
@@ -48,12 +48,12 @@ const faqData: Record<string, { question: string; answer: string }[]> = {
   ],
   Consult: [
     { question: 'What services does IHLink Consult offer?', answer: 'We offer web and mobile development, AI/ML solutions, cloud computing (AWS), IoT and embedded systems, robotics, networking and technical consultation.' },
-    { question: 'How do I request a consultation?', answer: 'Visit our Contact page and select "Consultation Request" as the subject, or use the Onboarding Wizard to get a personalized recommendation.' },
+    { question: 'How do I request a consultation?', answer: 'Open the IHLink Consult platform and choose Book a Consultation or Request a Quote. You can also contact IHLink through the published contact channels or a tracked support ticket.' },
     { question: 'Can IHLink Consult handle remote projects?', answer: 'Consult requests can be submitted for remote delivery. Scope, jurisdiction, communication arrangements and availability are confirmed during project review.' },
     { question: 'How is a project timeline determined?', answer: 'The timeline is determined from the approved scope, milestones, dependencies and delivery requirements. Confirmed dates are recorded in the project workflow rather than estimated on this FAQ page.' },
   ],
   Billing: [
-    { question: 'What payment methods do you accept?', answer: 'Payment methods depend on the IHLink product and the payment integrations currently configured. The relevant checkout, invoice or wallet page displays the available method.' },
+    { question: 'What payment methods do you accept?', answer: 'BillStack is available only for DataSub wallet funding. Other IHLink services use the company bank accounts shown on their payment pages: transfer the exact amount, upload proof, and await Finance verification. SchoolPro student fees use the school’s own configured bank accounts.' },
     { question: 'Can I request a refund?', answer: 'Where a refund is applicable, it can be reviewed through IHLink support and the internal finance workflow. Approval and settlement depend on the underlying transaction and payment provider.' },
     { question: 'Where can I see billing records?', answer: 'Signed-in customers can use Billing & Payments to review authorized payment activity associated with their IHLink account. Project and service invoices are also managed in the relevant platform workflow.' },
     { question: 'Where are charges shown?', answer: 'Configured prices, quotations, invoices and transaction amounts are shown in the relevant product workflow before an applicable payment or purchase is completed.' },
