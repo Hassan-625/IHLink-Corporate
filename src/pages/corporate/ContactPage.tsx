@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import {SupportTicketForm} from '@/components/SupportTicketForm';
 import { PageShell } from '@/components/PageShell';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea, Select } from '@/components/ui/Input';
-import { useToast } from '@/components/ui/Toast';
+
 import {
   MapPin, Phone, Mail, Clock, Send, MessageSquare,
   Building2, Sparkles, CheckCircle2,
@@ -50,18 +50,6 @@ const officeHours = [
 ];
 
 export function ContactPage() {
-  const { showToast } = useToast();
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: 'general', message: '' });
-
-  const handleSubmit = () => {
-    if (!form.name || !form.email || !form.message) {
-      showToast('error', 'Please fill all required fields');
-      return;
-    }
-    showToast('success', 'Message sent!', 'We will get back to you within 24 hours.');
-    setForm({ name: '', email: '', phone: '', subject: 'general', message: '' });
-  };
-
   return (
     <PageShell product="corporate">
       {/* Hero */}
@@ -114,22 +102,11 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h2 className="text-xl font-extrabold text-ink">Send Us a Message</h2>
-                  <p className="text-xs text-muted">We typically respond within 24 hours.</p>
+                  <p className="text-xs text-muted">Track your enquiry with the IHLink support team.</p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="Full Name *" placeholder="e.g. Chidi Okafor" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-                <Input label="Email *" type="email" placeholder="e.g. you@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-                <Input label="Phone" type="tel" placeholder="e.g. 0803 123 4567" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
-                <Select label="Subject" options={subjects} value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} />
-              </div>
-              <div className="mt-4">
-                <Textarea label="Message *" rows={5} placeholder="Tell us how we can help..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
-              </div>
-              <div className="flex items-center justify-between mt-6">
-                <p className="text-xs text-muted">Fields marked with * are required.</p>
-                <Button size="lg" onClick={handleSubmit} leftIcon={<Send className="w-4 h-4" />}>Send Message</Button>
-              </div>
+              <p className="mb-4 text-sm text-muted">Use the contact channels above for a direct enquiry. Sign in to submit a tracked request to IHLink support and receive its ticket number.</p>
+              <SupportTicketForm product="corporate"/>
             </Card>
           </div>
 
