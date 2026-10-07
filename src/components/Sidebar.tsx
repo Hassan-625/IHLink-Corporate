@@ -102,8 +102,7 @@ export function DashboardLayout({
                   <Link
                     key={item.href}
                     to={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    onClick={item.onClick?(event)=>{event.preventDefault();openItem(item);}:undefined}
+                    onClick={(event)=>{setMobileOpen(false);if(item.onClick){event.preventDefault();openItem(item);}}}
                     className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.href)
                         ? `${theme.badgeBg} ${theme.textClass}`
