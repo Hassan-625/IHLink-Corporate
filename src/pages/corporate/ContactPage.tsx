@@ -22,7 +22,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    lines: [IHLinkContact.phoneDisplay, 'WhatsApp available', 'Mon–Fri, 8am–6pm WAT'],
+    lines: [IHLinkContact.phoneDisplay, 'WhatsApp available', '24 hours, every day'],
     color: 'bg-emerald-50 text-emerald-600',
   },
   {
@@ -43,10 +43,10 @@ const subjects = [
 ];
 
 const officeHours = [
-  { day: 'Monday – Friday', hours: '8:00 AM – 6:00 PM' },
-  { day: 'Saturday', hours: '9:00 AM – 2:00 PM' },
-  { day: 'Sunday', hours: 'Closed' },
-  { day: 'Public Holidays', hours: 'Closed' },
+  { day: 'Monday – Friday', hours: '24 hours' },
+  { day: 'Saturday', hours: '24 hours' },
+  { day: 'Sunday', hours: '24 hours' },
+  { day: 'Public Holidays', hours: '24 hours' },
 ];
 
 export function ContactPage() {
@@ -166,7 +166,7 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-ink">Prefer to talk directly?</h3>
-                  <p className="text-sm text-muted">Our team is available during business hours to assist you.</p>
+                  <p className="text-sm text-muted">Send enquiries and support requests 24 hours, every day.</p>
                 </div>
               </div>
               <div className="flex gap-3">
