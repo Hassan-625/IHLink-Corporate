@@ -1,3 +1,4 @@
+import {SupportKnowledgeBase} from '@/components/SupportKnowledgeBase';
 import { useState } from "react";
 import { PlatformLink as Link } from "@/components/PlatformLink";
 import { PageShell } from "@/components/PageShell";
@@ -147,6 +148,7 @@ export function SupportPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-6 py-8"><SupportKnowledgeBase product="corporate"/></section>
       {/* Help Categories */}
       <section className="py-8 px-6 lg:px-10 max-w-[1280px] mx-auto">
         <div className="text-center mb-8">
@@ -199,15 +201,15 @@ export function SupportPage() {
               {[
                 {
                   day: "Monday – Friday",
-                  hours: "8:00 AM – 6:00 PM WAT",
+                  hours: "24 hours",
                   available: true,
                 },
                 {
                   day: "Saturday",
-                  hours: "9:00 AM – 2:00 PM WAT",
+                  hours: "24 hours",
                   available: true,
                 },
-                { day: "Sunday", hours: "Closed", available: false },
+                { day: "Sunday", hours: "24 hours", available: true },
               ].map((o, i) => (
                 <div
                   key={i}
