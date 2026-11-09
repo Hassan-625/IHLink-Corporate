@@ -28,6 +28,7 @@ import { BillingPage } from '@/pages/account/BillingPage';
 import { AccountSupportPage } from '@/pages/account/AccountSupportPage';
 import { AccountSecurityPage } from '@/pages/account/AccountSecurityPage';
 import { ProfilePage } from '@/pages/account/ProfilePage';
+import { ResponsibilitiesPage } from '@/pages/account/ResponsibilitiesPage';
 import {BusinessCentreHome} from '@/pages/business-centre/BusinessCentreHome';
 import {BusinessCustomerWorkspace} from '@/pages/business-centre/BusinessOperations';
 export default function App(){return <Routes>
@@ -43,5 +44,6 @@ export default function App(){return <Routes>
   <Route path="/account/support" element={<ProtectedRoute><AccountSupportPage/></ProtectedRoute>}/>
   <Route path="/account/security" element={<ProtectedRoute><AccountSecurityPage/></ProtectedRoute>}/>
   <Route path="/account/profile" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
+  <Route path="/account/responsibilities" element={<ProtectedRoute><ResponsibilitiesPage/></ProtectedRoute>}/>
   <Route path="*" element={<Navigate to="/" replace/>}/>
 </Routes>}
