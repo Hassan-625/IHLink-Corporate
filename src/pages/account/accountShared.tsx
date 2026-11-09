@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Bell, Briefcase, Cpu, CreditCard, GraduationCap, LayoutDashboard, LifeBuoy, LockKeyhole, Server, Smartphone, UserRound, Printer, Box, Bot, Building2 } from "lucide-react";
+import { ClipboardList, Bell, Briefcase, Cpu, CreditCard, GraduationCap, LayoutDashboard, LifeBuoy, LockKeyhole, Server, Smartphone, UserRound, Printer, Box, Bot, Building2 } from "lucide-react";
 import type { SidebarSection } from "@/components/Sidebar";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
@@ -21,7 +21,7 @@ const workspaceItems=[
  {product:"digital_business",label:"Digital Business",href:"/business-centre/digital-services",icon:<Smartphone className="h-4 w-4"/>},
 ] as const;
 
-const baseItems=[{label:"Customer Dashboard",href:"/account",icon:<LayoutDashboard className="h-4 w-4"/>},{label:"Profile & Security",href:"/account/profile",icon:<UserRound className="h-4 w-4"/>},{label:"Notifications",href:"/account/notifications",icon:<Bell className="h-4 w-4"/>},{label:"Billing",href:"/account/billing",icon:<CreditCard className="h-4 w-4"/>},{label:"Security",href:"/account/security",icon:<LockKeyhole className="h-4 w-4"/>},{label:"Support",href:"/account/support",icon:<LifeBuoy className="h-4 w-4"/>}];
+const baseItems=[{label:"My Responsibilities",href:"/account/responsibilities",icon:<ClipboardList className="h-4 w-4"/>},{label:"Customer Dashboard",href:"/account",icon:<LayoutDashboard className="h-4 w-4"/>},{label:"Profile & Security",href:"/account/profile",icon:<UserRound className="h-4 w-4"/>},{label:"Notifications",href:"/account/notifications",icon:<Bell className="h-4 w-4"/>},{label:"Billing",href:"/account/billing",icon:<CreditCard className="h-4 w-4"/>},{label:"Security",href:"/account/security",icon:<LockKeyhole className="h-4 w-4"/>},{label:"Support",href:"/account/support",icon:<LifeBuoy className="h-4 w-4"/>}];
 
 export function useAccountSections():SidebarSection[]{
  const {user,profile,adminAccess}=useAuth(); const [active,setActive]=useState<string[]>([]);
